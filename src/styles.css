@@ -1,0 +1,266 @@
+/*
+ * nepali-miti-react default styles.
+ * Import once: import 'nepali-miti-react/styles.css';
+ * Customise with the CSS variables below, on .nmr-picker / .nmr-calendar or any ancestor.
+ */
+.nmr-picker,
+.nmr-calendar {
+  --nmr-font: inherit;
+  --nmr-bg: #ffffff;
+  --nmr-fg: #1c1f24;
+  --nmr-muted: #6b7280;
+  --nmr-border: #d5d9e0;
+  --nmr-hover: #eef2f7;
+  --nmr-accent: #c8102e; /* Nepal flag crimson */
+  --nmr-accent-fg: #ffffff;
+  --nmr-focus: #003893; /* Nepal flag blue */
+  --nmr-weekend: #c8102e;
+  --nmr-radius: 8px;
+  --nmr-cell: 2.5rem;
+  --nmr-shadow: 0 10px 30px rgb(0 0 0 / 0.14);
+  font-family: var(--nmr-font);
+  color: var(--nmr-fg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .nmr-picker:not(.nmr-light),
+  .nmr-calendar:not(.nmr-light) {
+    --nmr-bg: #1b1e23;
+    --nmr-fg: #e8eaed;
+    --nmr-muted: #9aa0a6;
+    --nmr-border: #3a3f47;
+    --nmr-hover: #2a2e35;
+    --nmr-accent: #e5394f;
+    --nmr-focus: #8ab4f8;
+    --nmr-weekend: #ff7b8a;
+    --nmr-shadow: 0 10px 30px rgb(0 0 0 / 0.5);
+  }
+}
+
+.nmr-dark {
+  --nmr-bg: #1b1e23;
+  --nmr-fg: #e8eaed;
+  --nmr-muted: #9aa0a6;
+  --nmr-border: #3a3f47;
+  --nmr-hover: #2a2e35;
+  --nmr-accent: #e5394f;
+  --nmr-focus: #8ab4f8;
+  --nmr-weekend: #ff7b8a;
+  --nmr-shadow: 0 10px 30px rgb(0 0 0 / 0.5);
+}
+
+/* Picker */
+.nmr-picker {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+.nmr-field {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--nmr-border);
+  border-radius: var(--nmr-radius);
+  background: var(--nmr-bg);
+  overflow: hidden;
+}
+.nmr-field:focus-within {
+  outline: 2px solid var(--nmr-focus);
+  outline-offset: 1px;
+}
+.nmr-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  outline: none;
+}
+.nmr-input[aria-invalid='true'] {
+  color: var(--nmr-accent);
+}
+.nmr-toggle {
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-left: 1px solid var(--nmr-border);
+  padding: 0 0.6rem;
+  background: transparent;
+  color: var(--nmr-muted);
+  cursor: pointer;
+}
+.nmr-toggle:hover:not(:disabled) {
+  background: var(--nmr-hover);
+  color: var(--nmr-fg);
+}
+.nmr-toggle:disabled,
+.nmr-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.nmr-popover {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 4px);
+  left: 0;
+  padding: 0.75rem;
+  background: var(--nmr-bg);
+  border: 1px solid var(--nmr-border);
+  border-radius: var(--nmr-radius);
+  box-shadow: var(--nmr-shadow);
+}
+.nmr-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--nmr-border);
+}
+
+/* Calendar */
+.nmr-calendar {
+  display: inline-block;
+  background: var(--nmr-bg);
+  font-size: 0.9375rem;
+  line-height: 1.2;
+}
+.nmr-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'prev selects next';
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.nmr-header > .nmr-nav:first-child {
+  grid-area: prev;
+}
+.nmr-header > .nmr-nav:last-child {
+  grid-area: next;
+}
+.nmr-heading {
+  /* Visually hidden: the selects show the month; the heading labels the grid for screen readers. */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  margin: 0;
+}
+.nmr-selects {
+  grid-area: selects;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+.nmr-select {
+  font: inherit;
+  color: inherit;
+  background: var(--nmr-bg);
+  border: 1px solid var(--nmr-border);
+  border-radius: calc(var(--nmr-radius) - 2px);
+  padding: 0.25rem 0.4rem;
+}
+.nmr-nav,
+.nmr-action {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: calc(var(--nmr-radius) - 2px);
+  cursor: pointer;
+}
+.nmr-nav {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.25rem;
+}
+.nmr-action {
+  padding: 0.3rem 0.6rem;
+  color: var(--nmr-focus);
+}
+.nmr-nav:hover:not(:disabled),
+.nmr-action:hover:not(:disabled) {
+  background: var(--nmr-hover);
+}
+.nmr-nav:disabled,
+.nmr-action:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.nmr-grid {
+  border-collapse: collapse;
+}
+.nmr-grid th {
+  width: var(--nmr-cell);
+  padding-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--nmr-muted);
+  text-align: center;
+}
+.nmr-grid th[data-weekend] {
+  color: var(--nmr-weekend);
+}
+.nmr-grid td {
+  padding: 1px;
+  text-align: center;
+}
+.nmr-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--nmr-cell);
+  height: var(--nmr-cell);
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: calc(var(--nmr-radius) - 2px);
+  cursor: pointer;
+}
+.nmr-day:hover:not([aria-disabled]) {
+  background: var(--nmr-hover);
+}
+.nmr-day:focus-visible,
+.nmr-nav:focus-visible,
+.nmr-action:focus-visible,
+.nmr-select:focus-visible,
+.nmr-toggle:focus-visible {
+  outline: 2px solid var(--nmr-focus);
+  outline-offset: 1px;
+}
+.nmr-day[data-weekend] {
+  color: var(--nmr-weekend);
+}
+.nmr-day[data-today] {
+  border-color: var(--nmr-accent);
+}
+.nmr-day[data-selected] {
+  background: var(--nmr-accent);
+  color: var(--nmr-accent-fg);
+}
+.nmr-day[aria-disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+.nmr-bs {
+  font-weight: 500;
+}
+.nmr-ad {
+  font-size: 0.625rem;
+  opacity: 0.65;
+}
+
+@media (max-width: 360px) {
+  .nmr-picker,
+  .nmr-calendar {
+    --nmr-cell: 2.15rem;
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "name": "nepali-miti-react",
+  "version": "1.0.0",
+  "description": "Accessible Bikram Sambat (Nepali) date picker and calendar for React 18/19. Keyboard navigation, Nepali/English, dark mode, form-ready. Built on nepali-miti.",
+  "keywords": [
+    "react",
+    "nepali",
+    "date-picker",
+    "datepicker",
+    "nepali-date-picker",
+    "bikram-sambat",
+    "calendar",
+    "nepali-calendar",
+    "bs",
+    "accessible",
+    "a11y",
+    "nextjs"
+  ],
+  "homepage": "https://github.com/alexblaze/nepali-miti-react#readme",
+  "bugs": {
+    "url": "https://github.com/alexblaze/nepali-miti-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexblaze/nepali-miti-react.git"
+  },
+  "license": "MIT",
+  "author": "alexblaze (https://github.com/alexblaze)",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint . && prettier --check . && tsc -p .",
+    "format": "prettier --write .",
+    "typecheck": "tsc -p .",
+    "check:package": "publint && attw --pack . --profile node16 --exclude-entrypoints ./styles.css",
+    "prepublishOnly": "npm run lint && npm test && npm run build && npm run check:package"
+  },
+  "peerDependencies": {
+    "nepali-miti": "^1.0.0",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@eslint/js": "^10.0.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^22.20.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitest/coverage-v8": "^5.0.3",
+    "axe-core": "^4.13.0",
+    "eslint": "^10.11.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "jsdom": "^30.1.1",
+    "nepali-miti": "github:alexblaze/nepali-miti",
+    "prettier": "^3.9.9",
+    "publint": "^0.3.25",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tsup": "^8.5.1",
+    "typescript": "~5.9",
+    "typescript-eslint": "^8.71.0",
+    "vitest": "^5.0.3",
+    "vitest-axe": "^0.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "overrides": {
+    "esbuild": "^0.28.2"
+  }
+}
