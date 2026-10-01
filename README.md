@@ -191,7 +191,7 @@ Use `timeZone="nepal"` when "today" should mean today in Nepal, so the server re
 
 ## Compatibility
 
-Tested with React 18.3 and 19.3 on Node.js 20, 22 and 24, in several timezones. The output is ES2020 and needs no
+Tested with React 18.3 and 19.3 on Node.js 22 and 24 (the test tooling needs Node 22+), in several timezones. The output is ES2020 and needs no
 polyfills.
 
 ## Contributing and development

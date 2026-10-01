@@ -5,7 +5,7 @@ Thanks for helping! This package is the React UI. Date conversion and calendar d
 
 ## Setup
 
-Requires Node.js 20+ for development (the published package supports Node.js 18+).
+Requires Node.js 22+ for development (Vitest and jsdom need it).
 
 ```sh
 git clone https://github.com/alexblaze/nepali-miti-react.git
@@ -36,7 +36,7 @@ Accessibility is a requirement: keep the keyboard behaviour in the README workin
 - Add tests for every behaviour change.
 - Public API changes need README and CHANGELOG updates (under `## [Unreleased]`).
 - Use [Conventional Commits](https://www.conventionalcommits.org/): `fix: …`, `feat: …`, `docs: …`, `chore: …`.
-- CI must pass: lint, tests on React 18/19 and Node.js 20/22/24 in several timezones, build, package checks.
+- CI must pass: lint, tests on React 18/19 and Node.js 22/24 in several timezones, build, package checks.
 
 ## Release process (maintainers)
 
